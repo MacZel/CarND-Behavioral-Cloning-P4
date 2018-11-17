@@ -1,6 +1,37 @@
 # **Behavioral Cloning**
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
+
+Running on local machine:
+Assumes you have properly installed, configured  and up to date both git and python (I recommend anaconda) on your local machine.
+
+Step 0:
+* This will install tensorflow-gpu!
+  Here you can find instructions for enabling your GPU -> [TensorFlow GPU support](https://www.tensorflow.org/install/gpu)
+  (I did run this project on Nvidia GTX-970)
+
+Step 1:
+* Clone this repository.
+Step 2:
+* Setup a virtual environment inside cloned project, activate it and then install required packages
+  ```
+  virtualenv venv
+  venv\Scripts\activate
+  pip install -r requirements.txt
+  ```
+Step 3:
+* Install simulator -> [Udacity simulator](https://github.com/udacity/self-driving-car-sim)
+
+Step 4:
+* If you want to run jupyter notebook simply run command `jupyter notebook`
+  BEWARE: Some notebook cells trigger TF GPU jobs.
+* If you want to run simulator with 'Autonomous mode', run following command `python drive.py model.h5`,
+  then launch simulator.
+  BEWARE: This will also trigger another TF GPU jobs.
+  
+FAQ: If you would run into error (CPU->GPU Memcpy failed) like I did. This simply means one of the TF jobs is   blocking most of the GPUs memory. Therefore you may only run one job at the time (stop jupyter notebook).
+
+
 Overview
 ---
 This repository contains starting files for the Behavioral Cloning Project.
