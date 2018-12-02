@@ -114,17 +114,29 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 #### 2. Final Model Architecture
 
 The final model architecture consisted of a convolution neural network with the following layers and layer sizes:
+
 Input layer: IN: 66x200x3
+
 Normalization layer: IN: 66x200x3 OUT:66x200x3
+
 Convolution layer (activation: ReLU, stride: 2x2, filter: 5x5): IN: 66x200x3 OUT: 31x98x24
+
 Convolution layer (activation: ReLU, stride: 2x2, filter: 5x5): IN: 31x98x24 OUT: 14x47x36
+
 Convolution layer (activation: ReLU, stride: 2x2, filter: 5x5): IN: 14x47x36 OUT: 5x22x48
+
 Convolution layer (activation ReLU, filter 3x3): IN: 5x22x48 OUT: 3x20x64
+
 Convolution layer (activation ReLU, filter 3x3): IN: 3x20x64 OUT: 1x18x64
+
 Flattening layer: IN: 1x18x64 OUT: 1164
+
 Fully-connected layer: IN: 1164 OUT: 100
+
 Fully-connected layer: IN: 100  OUT: 50
+
 Fully-connected layer: IN: 50   OUT: 10
+
 Output layer: IN: 10 OUT: 1
 
 Here is a visualization of the architecture:
@@ -133,13 +145,20 @@ Here is a visualization of the architecture:
 #### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two and more laps on both tracks using center lane driving, driving in both directions.
+
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn how to react when getting closer to the edge of the road.
+
 To augment the data, I also flipped images horizontally.
+
 After the collection process, I had 38572 of samples in training set (Udacity datasets) and around 150 000 of samples in training set when training on my datasets. I then preprocessed this data as mentione before by passing images through hlp.preprocess() function.
+
 Here is an example of preprocessed image:
 ![Preprocessed image][image2]
+
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
+
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 2-3 as evidenced in notebook.
+
 ```
 Train on 38572 samples, validate on 9644 samples
 Epoch 1/3
@@ -149,9 +168,11 @@ Epoch 2/3
 Epoch 3/3
 38572/38572 [==============================] - 21s 551us/step - loss: 0.0118 - val_loss: 0.0210
 ```
+
 I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
-
 run7.mp4 - shows the car driving autonomusly with model trained on my own samples.
+
 run8.mp4 - shows the car driving autonomusly with model trained on Udacity samples.
+
 simulation.mp4 - shows the car driving autonomusly recorded with included script capture_screen.py
